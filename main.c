@@ -103,12 +103,11 @@ int main(int argc, const char * argv[]) {
 
         /* output C array data */
         printf("    {");
-        int cw = ax*scale;
         for (int yy = 0; yy < c_h; ++yy) {
             for (int xx = 0; xx < c_w; ++xx) {
                 int v = bitmap[byteOffset + (yy - y)*b_w + xx];
                 printf(" %3d,", v);
-                if (v > 0) {
+                if (v > 0 && xx > maxx) {
                     maxx = xx;
                 }
             }
@@ -116,7 +115,8 @@ int main(int argc, const char * argv[]) {
         printf(" }, // U+%04d\n", ch);
 
         /* advance x */
-        x += ax*scale;
+        //x += ax*scale; // use true character width
+        x += c_w; // force mono-space width
 
         /* add kerning */
         if (ch < 127) {
