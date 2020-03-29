@@ -60,7 +60,7 @@ int main(int argc, const char * argv[]) {
             int ax;
             int lsb;
             stbtt_GetCodepointHMetrics(&info, ch, &ax, &lsb);
-            if (ax*scale > c_w) {
+            if (c_w < ax*scale) {
                 c_w = ax*scale;
             }
         }
