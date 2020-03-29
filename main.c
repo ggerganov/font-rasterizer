@@ -86,7 +86,7 @@ int main(int argc, const char * argv[]) {
     for (unsigned char ch = 0; ch < 128; ++ch) {
         /* how wide is this character */
         int ax;
-		int lsb;
+        int lsb;
         stbtt_GetCodepointHMetrics(&info, ch, &ax, &lsb);
 
         /* get bounding box for character (may be offset to account for chars that dip above or below the line */
